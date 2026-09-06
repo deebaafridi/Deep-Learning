@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Version control
+.git/
+.gitignore
+
+# Checkpoints and model weights
+*.pth
+*.pt
+*.ckpt
+
+# Output logs and submissions
+*.log
+solution.log
+submission.csv
+
+# Datasets (should be mounted via docker volume)
+data/
+
+# Testing and coverage caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/

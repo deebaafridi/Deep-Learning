@@ -1,0 +1,52 @@
+# Dataset & Column Validation Specification for DualCNN
+dataset:
+  name: "iith-deep-learning-2026-hackathon"
+  version: "1.0.0"
+
+  # Directory structure requirements
+  splits:
+    train:
+      required: true
+      classes:
+        - label: 0
+          min_samples: 1
+          description: "Negative class (no joint cube and sphere pattern)"
+        - label: 1
+          min_samples: 1
+          description: "Positive class (at least one cube and at least one sphere)"
+      allowed_extensions:
+        - ".png"
+        - ".jpg"
+        - ".jpeg"
+        - ".bmp"
+
+    test:
+      required: true
+      min_samples: 1
+      allowed_extensions:
+        - ".png"
+        - ".jpg"
+        - ".jpeg"
+        - ".bmp"
+
+  # Image characteristics
+  images:
+    expected_channels: 3
+    expected_spatial_size: [96, 96]
+    grayscale_channel_count: 1
+
+  # Submission CSV schema specification
+  submission_csv:
+    required: false
+    expected_columns:
+      - name: "ID"
+        type: "string"
+        allow_null: false
+        unique: true
+        description: "Image filename identifier (e.g., test_0001.png)"
+
+      - name: "Label"
+        type: "integer"
+        allow_null: false
+        allowed_values: [0, 1]
+        description: "Binary predicted class (0 or 1)"
